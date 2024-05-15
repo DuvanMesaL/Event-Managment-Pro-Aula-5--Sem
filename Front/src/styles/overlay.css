@@ -1,0 +1,24 @@
+/* overlay.css */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: none;
+}
+
+.overlay.visible {
+    display: block;
+}
+
+.app-container {
+    position: relative;
+}
+
+.app-container.sidebar-open {
+    overflow: hidden;
+}

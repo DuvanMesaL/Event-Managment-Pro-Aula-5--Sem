@@ -1,12 +1,13 @@
+/* Estilo general del menú desplegable */
 .dropdown-fullwidth {
     display: none;
     position: absolute;
     left: 0;
     right: 0;
     background-color: #E3FEF7;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 15px 0;
-    z-index: 10;
+    z-index: 20;
+    overflow: visible;
 }
 
 .dropdown-header {
@@ -23,23 +24,160 @@
 
 .dropdown-fullwidth.open {
     display: flex;
-
     justify-content: center;
 }
 
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+/* Contenedor principal para las opciones y tarjetas */
+.dropdown-main {
+    display: flex;
+    gap: 2em;
+}
+
+/* Aplica el box-shadow solo en pantallas pequeñas */
+@media (max-width: 1200px) {
+    .dropdown-main {
+        box-shadow: none;
+    }
+}
+
+/* Grid para pantallas grandes */
+.dropdown-grid {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+}
+
+.dropdown-title {
+    grid-column: span 2;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+.dropdown-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dropmenu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.dropmenu-item a {
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.dropmenu-item a:hover {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.dropmenu-item a img {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+}
+
+/* Ocultar iconos en elementos del menú para pantallas pequeñas */
+@media (max-width: 1200px) {
+    .dropmenu-item a img {
+        display: none;
+    }
+}
+
+.info-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.info-box h4 {
+    margin: 0 0 0.5em 0;
+}
+
+.info-box p {
+    margin: 0;
+}
+
+.info-box-icon {
+    margin-right: 1em;
+    width: 40px;
+    height: 40px;
+}
+
+.extra-section {
+    margin-top: 2em;
+}
+
+.extra-section h4 {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.category-item {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+}
+
+.category-item:hover {
+    text-decoration: underline;
+}
+
+/* Estilos responsive */
 @media (max-width: 1200px) {
     .dropdown-fullwidth {
         height: 100%;
         width: 250px;
         display: none;
-        position: absolute;
+        position: fixed;
         left: 0;
         right: 0;
         top: 0;
         background-color: #E3FEF7;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         padding: 15px 0;
         z-index: 1500;
+        overflow: visible;
     }
 
     .dropdown-header {
@@ -80,6 +218,9 @@
 
     .close-button {
         display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 2rem;
     }
 
     .close-button:hover {
@@ -91,4 +232,42 @@
         justify-content: center;
     }
 
+    .dropdown-content {
+        flex-direction: column;
+        padding: 1em;
+        overflow-y: auto;
+    }
+
+    .dropdown-main {
+        flex-direction: column;
+    }
+
+    .dropdown-grid {
+        display: block;
+        padding: 1em;
+    }
+
+    .dropmenu-item {
+        margin-bottom: 10px;
+    }
+
+    .dropmenu-column {
+        display: block;
+    }
+
+    .dropdown-title {
+        grid-column: auto;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .info-boxes {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .extra-section {
+        grid-column: auto;
+    }
 }

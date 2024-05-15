@@ -3,8 +3,7 @@ import LogoIcon from "./../assets/logo-icon.png";
 import "./../styles/navbar.css";
 import DropdownMenu from "./DropMenu";
 
-const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
     const [activeMenu, setActiveMenu] = useState("");
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
     const hoverTimeout = useRef(null);
@@ -13,22 +12,23 @@ const Navbar = () => {
         function handleResize() {
             const newIsMobile = window.innerWidth < 1200;
             if (!newIsMobile && isMobile) {
-                // If transitioning from mobile to desktop, close any active dropdown menus
-                setActiveMenu("");
+                setIsMobile(newIsMobile);
+                // Close the sidebar and clear active menu when resizing to desktop
+                onCloseSidebar();
+            } else {
+                setIsMobile(newIsMobile);
             }
-            setIsMobile(newIsMobile);
         }
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, [isMobile]);
+    }, [isMobile, onCloseSidebar]);
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+    useEffect(() => {
         if (!isOpen) {
-            setActiveMenu(""); // Clears any active menu when the sidebar is toggled
+            setActiveMenu("");
         }
-    };
+    }, [isOpen]);
 
     const handleDropdownClick = (menuName) => {
         if (isMobile) {
@@ -51,23 +51,180 @@ const Navbar = () => {
         }
     };
 
+    const handleBack = () => {
+        setActiveMenu("");
+    };
+
     const menuItems = {
-        eventos: [
-            { label: "Bodas", link: "/bodas" },
-            { label: "Cumpleaños", link: "/cumpleanos" },
-            { label: "Otros Eventos", link: "/otros" },
-        ],
+        eventos: {
+            title: "Mi Organizadora de Eventos",
+            titleLink: "/mi-organizadora-eventos",
+            items: [
+                { label: "Bodas", link: "/bodas", icon: "/path/to/icon1.png" },
+                {
+                    label: "Cumpleaños",
+                    link: "/cumpleanos",
+                    icon: "/path/to/icon2.png",
+                },
+                {
+                    label: "Otros Eventos",
+                    link: "/otros",
+                    icon: "/path/to/icon3.png",
+                },
+            ],
+        },
+        proveedores: {
+            title: "Empieza a contratar tus proveedores",
+            titleLink: "/proveedores",
+            items: [
+                {
+                    label: "Fotógrafos",
+                    link: "/fotografos",
+                    icon: "/path/to/icon4.png",
+                },
+                {
+                    label: "Catering",
+                    link: "/catering",
+                    icon: "/path/to/icon5.png",
+                },
+                {
+                    label: "Música",
+                    link: "/musica",
+                    icon: "/path/to/icon6.png",
+                },
+                {
+                    label: "Vestimenta",
+                    link: "/vestimenta",
+                    icon: "/path/to/icon7.png",
+                },
+                {
+                    label: "Decoracion",
+                    link: "/decoracion",
+                    icon: "/path/to/icon8.png",
+                },
+                {
+                    label: "Coordinadores de Eventos",
+                    link: "/coordinadores",
+                    icon: "/path/to/icon9.png",
+                },
+                {
+                    label: "Transporte",
+                    link: "/transporte",
+                    icon: "/path/to/icon10.png",
+                },
+                {
+                    label: "Belleza y Estilo",
+                    link: "belleza",
+                    icon: "/path/to/icon11.png",
+                },
+            ],
+        },
+        planificaciones: {
+            title: "Planifica tu evento",
+            titleLink: "/planificaciones",
+            items: [
+                {
+                    label: "Lugares",
+                    link: "/lugares",
+                    icon: "/path/to/icon12.png",
+                },
+                {
+                    label: "Invitaciones",
+                    link: "/invitaciones",
+                    icon: "/path/to/icon13.png",
+                },
+                {
+                    label: "Programacion",
+                    link: "/programacion",
+                    icon: "/path/to/icon14.png",
+                },
+                {
+                    label: "Presupuesto",
+                    link: "/presupuesto",
+                    icon: "/path/to/icon15.png",
+                },
+                {
+                    label: "Lista de Invitados",
+                    link: "/invitados",
+                    icon: "/path/to/icon16.png",
+                },
+                {
+                    label: "Timeline de Eventos",
+                    link: "/timeline",
+                    icon: "/path/to/icon17.png",
+                },
+            ],
+        },
+        contacto: {
+            title: "Contacto",
+            titleLink: "/contacto",
+            items: [
+                {
+                    label: "Formulario de Contacto",
+                    link: "/contact-form",
+                    icon: "/path/to/icon18.png",
+                },
+            ],
+        },
+    };
+
+    const infoBoxes = {
         proveedores: [
-            { label: "Fotógrafos", link: "/fotografos" },
-            { label: "Catering", link: "/catering" },
-            { label: "Música", link: "/musica" },
+            {
+                title: "Destination Weddings",
+                content: "Cásate en el país que siempre has soñado.",
+                icon: "/path/to/info-icon1.png",
+            },
+            {
+                title: "Gana 5.000€",
+                content:
+                    "Participa en la 139ª edición del sorteo de Bodas.net.",
+                icon: "/path/to/info-icon2.png",
+            },
         ],
+        planificaciones: [
+            {
+                title: "Planifica tu evento",
+                content:
+                    "Encuentra todos los recursos que necesitas para planificar tu evento.",
+                icon: "/path/to/info-icon3.png",
+            },
+        ],
+    };
+
+    const extraSections = {
+        proveedores: {
+            title: "Otras Categorías",
+            items: [
+                { label: "Mobiliario", link: "/mobiliario" },
+                { label: "Carpas", link: "/carpas" },
+                { label: "Animación", link: "/animacion" },
+                { label: "Decoración para bodas", link: "/decoracion-bodas" },
+                { label: "Listas de boda", link: "/listas-boda" },
+                { label: "Organización Bodas", link: "/organizacion-bodas" },
+                { label: "Tartas de boda", link: "/tartas-boda" },
+                {
+                    label: "Food truck y mesas dulces",
+                    link: "/food-truck-mesas-dulces",
+                },
+                { label: "Promociones", link: "/promociones" },
+            ],
+        },
+        planificaciones: {
+            title: "Lo Más Recomendado",
+            items: [
+                { label: "Hoteles", link: "/hoteles" },
+                { label: "Salones de eventos", link: "/salones" },
+                { label: "Catering", link: "/catering" },
+                { label: "Decoración", link: "/decoracion" },
+            ],
+        },
     };
 
     return (
         <div>
             <nav className="navbar">
-                <button className="menu-button" onClick={toggleSidebar}>
+                <button className="menu-button" onClick={onToggleSidebar}>
                     ☰
                 </button>
                 <div className="container-navbar">
@@ -81,7 +238,7 @@ const Navbar = () => {
                         <div className="close-navigation">
                             <button
                                 className="close-button"
-                                onClick={toggleSidebar}
+                                onClick={onToggleSidebar}
                             >
                                 ×
                             </button>
@@ -126,8 +283,14 @@ const Navbar = () => {
                     isOpen={activeMenu === key}
                     onMouseEnter={() => clearTimeout(hoverTimeout.current)}
                     onMouseLeave={handleMouseLeave}
-                    items={menuItems[key]}
+                    items={menuItems[key].items}
                     menuName={key.charAt(0).toUpperCase() + key.slice(1)}
+                    title={menuItems[key].title}
+                    titleLink={menuItems[key].titleLink}
+                    infoBoxes={infoBoxes[key]}
+                    extraSection={extraSections[key]}
+                    onBack={handleBack}
+                    onClose={onCloseSidebar}
                 />
             ))}
         </div>
