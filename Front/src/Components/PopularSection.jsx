@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "./Cards";
 import { FaArrowRight } from "react-icons/fa";
 import "../styles/PopularSection.css";

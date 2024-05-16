@@ -2,8 +2,10 @@ import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import HighlightSection from "./Components/HighlightSection";
 import "./styles/overlay.css";
+import "./styles/Accordion.css";
 import LogoCarousel from "./Components/ProoveedoresSection";
 import PopularSection from "./Components/PopularSection";
+import About from "./Components/AboutSection";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,7 @@ function App() {
             <HighlightSection />
             <LogoCarousel />
             <PopularSection />
+            <About />
         </div>
     );
 }

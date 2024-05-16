@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+.about-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4f8;
+    padding: 40px 40px;
+    border-bottom: 10px solid #003C43;
+}
+
+.about-content {
+    width: 80%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #ddd;
+    /* Borde suave */
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    /* Tamaño de fuente más grande */
+}
