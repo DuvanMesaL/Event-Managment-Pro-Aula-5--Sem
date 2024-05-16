@@ -1,4 +1,5 @@
-/* Navbar CSS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 .navbar {
     background-color: #E3FEF7;
     width: 100%;
@@ -8,15 +9,18 @@
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #d0d0d0f1;
+    position: relative;
+    z-index: 30;
 }
 
 .container-navbar {
     position: relative;
-    /* Esto asegura que el dropdown se posicione relativo a este contenedor */
-    min-width: 900px;
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 16px;
 }
 
 .menu-button {
@@ -41,6 +45,7 @@
 
 .logo a {
     color: #135D66;
+    font-family: "Playfair Display", "Roboto", sans-serif;
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -53,6 +58,7 @@
 
 .logo a h1 {
     font-size: 1.8rem;
+    transition: font-size 0.3s;
 }
 
 .logo img {
@@ -60,11 +66,15 @@
 }
 
 .navigation {
-    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
 }
 
 .navigation ul {
     display: flex;
+    flex-direction: row;
     margin-left: 15px;
     margin-right: 25px;
 }
@@ -72,10 +82,13 @@
 .navigation ul li {
     font-size: 1.2rem;
     display: flex;
-    padding: 0px 5px 0px 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
 }
 
 .navigation ul li a {
+    font-family: 'Roboto', sans-serif;
     text-decoration: none;
     color: black;
     height: 100%;
@@ -88,11 +101,20 @@
 }
 
 .access a {
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     padding-left: 5px;
     padding-right: 5px;
     text-decoration: none;
     color: #135D66;
+}
+
+.access a:hover {
+    font-weight: 800;
+}
+
+.mobile-access {
+    display: none;
 }
 
 @media (max-width: 1200px) {
@@ -110,26 +132,28 @@
         transition: transform 0.3s ease;
         background-color: #fff;
         z-index: 1000;
+        flex-direction: column;
+        justify-content: flex-start;
+
     }
 
     .container-navbar {
         width: 100%;
-        min-width: 0px;
+        max-width: 100%;
         justify-content: space-between;
     }
 
     .navigation.open {
-        width: 250px;
         background: #E3FEF7;
         transform: translateX(0);
     }
 
     .close-navigation {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         padding: 15px;
         width: 100%;
-        height: 80px;
+        height: 50px;
         border-bottom: 1px solid #d0d0d0f1;
     }
 
@@ -148,9 +172,15 @@
         display: flex;
         border: none;
         background-color: transparent;
-        font-size: 25px;
+        font-size: 15px;
         align-items: center;
         justify-content: center;
+    }
+
+    .dropdown-toggle-button img {
+        color: #bdbdbd;
+        width: 12px;
+        height: 16px;
     }
 
     .dropdown-toggle-button:hover {
@@ -160,6 +190,8 @@
     .navigation ul {
         flex-direction: column;
         height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .navigation ul li {
@@ -167,31 +199,39 @@
         align-items: center;
         justify-content: space-between;
         font-size: 1.3rem;
-        padding: 20px 10px 20px 10px;
+        padding: 20px 10px;
+    }
+
+    .logo a h1 {
+        font-size: 1.2rem;
     }
 }
 
-/* overlay.css */
+@media (max-width: 700px) {
+    .logo a {
+        display: none;
+    }
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    display: none;
-}
+    .logo img {
+        width: 50px;
+    }
 
-.overlay.visible {
-    display: block;
-}
+    .access {
+        display: none;
+    }
 
-.app-container {
-    position: relative;
-}
+    .mobile-access {
+        display: block;
+    }
 
-.app-container.sidebar-open {
-    overflow: hidden;
+    .mobile-access a img {
+        color: #135D66;
+        width: 24px;
+        height: 24px;
+        transition: all ease .2s;
+    }
+
+    .mobile-access a img:hover {
+        transform: translateY(-5px);
+    }
 }

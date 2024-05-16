@@ -7,18 +7,17 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 10;
+    z-index: 20;
+    /* Debajo del navbar pero encima del contenido */
     display: none;
+    opacity: 0;
+    /* Inicialmente invisible */
+    transition: opacity 0.4s ease-in-out;
+    /* Añadir transición */
 }
 
 .overlay.visible {
     display: block;
-}
-
-.app-container {
-    position: relative;
-}
-
-.app-container.sidebar-open {
-    overflow: hidden;
+    opacity: 1;
+    /* Visible cuando el overlay está activo */
 }

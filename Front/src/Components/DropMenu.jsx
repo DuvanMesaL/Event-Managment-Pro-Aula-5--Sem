@@ -1,4 +1,7 @@
+import PropTypes from "prop-types";
 import "../styles/DropMenu.css";
+import backbutton from "../assets/Icons/angulo-izquierdo.svg";
+import closebutton from "../assets/Icons/x.svg";
 
 const DropdownMenu = ({
     isOpen,
@@ -36,11 +39,19 @@ const DropdownMenu = ({
         >
             <div className="dropdown-header">
                 <button className="back-button" onClick={onBack}>
-                    {"<"}
+                    <img
+                        className="img-back"
+                        src={backbutton}
+                        alt="Toggle back"
+                    />
                 </button>
                 <span className="menu-title">{menuName}</span>
                 <button className="close-button" onClick={onClose}>
-                    {"×"}
+                    <img
+                        className="img-close-sidebar"
+                        src={closebutton}
+                        alt="Toggle close"
+                    />
                 </button>
             </div>
             <div className="dropdown-content">
@@ -108,6 +119,40 @@ const DropdownMenu = ({
             </div>
         </div>
     );
+};
+
+DropdownMenu.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onMouseEnter: PropTypes.func.isRequired,
+    onMouseLeave: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+            icon: PropTypes.string,
+        })
+    ).isRequired,
+    onClose: PropTypes.func.isRequired,
+    onBack: PropTypes.func.isRequired,
+    menuName: PropTypes.string.isRequired,
+    infoBoxes: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            content: PropTypes.string.isRequired,
+            icon: PropTypes.string,
+        })
+    ),
+    extraSection: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        items: PropTypes.arrayOf(
+            PropTypes.shape({
+                label: PropTypes.string.isRequired,
+                link: PropTypes.string.isRequired,
+            })
+        ).isRequired,
+    }),
+    title: PropTypes.string,
+    titleLink: PropTypes.string,
 };
 
 export default DropdownMenu;

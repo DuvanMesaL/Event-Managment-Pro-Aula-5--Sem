@@ -1,7 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { useState, useEffect, useRef } from "react";
 import LogoIcon from "./../assets/logo-icon.png";
+import dropdownToggleButton from "../assets/Icons/angulo-derecho.svg";
+import userIcon from "../assets/Icons/circulo-de-usuario.svg"; // Icono de usuario
 import "./../styles/navbar.css";
+import "../styles/overlay.css"; // Importar el archivo overlay.css
 import DropdownMenu from "./DropMenu";
+import iconPaths from "./iconsPaths";
 
 const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
     const [activeMenu, setActiveMenu] = useState("");
@@ -13,7 +18,6 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
             const newIsMobile = window.innerWidth < 1200;
             if (!newIsMobile && isMobile) {
                 setIsMobile(newIsMobile);
-                // Close the sidebar and clear active menu when resizing to desktop
                 onCloseSidebar();
             } else {
                 setIsMobile(newIsMobile);
@@ -60,16 +64,30 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
             title: "Mi Organizadora de Eventos",
             titleLink: "/mi-organizadora-eventos",
             items: [
-                { label: "Bodas", link: "/bodas", icon: "/path/to/icon1.png" },
+                {
+                    label: "Bodas",
+                    link: "/bodas",
+                    icon: iconPaths.bodas,
+                },
                 {
                     label: "Cumpleaños",
                     link: "/cumpleanos",
-                    icon: "/path/to/icon2.png",
+                    icon: iconPaths.cumpleanos,
+                },
+                {
+                    label: "Eventos Corrporativos",
+                    link: "/otros",
+                    icon: iconPaths.eventosCorporativos,
+                },
+                {
+                    label: "Eventos Culturales",
+                    link: "/otros",
+                    icon: iconPaths.eventosCulturales,
                 },
                 {
                     label: "Otros Eventos",
                     link: "/otros",
-                    icon: "/path/to/icon3.png",
+                    icon: iconPaths.otrosEventos,
                 },
             ],
         },
@@ -80,42 +98,38 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
                 {
                     label: "Fotógrafos",
                     link: "/fotografos",
-                    icon: "/path/to/icon4.png",
+                    icon: iconPaths.fotografos,
                 },
                 {
                     label: "Catering",
                     link: "/catering",
-                    icon: "/path/to/icon5.png",
+                    icon: iconPaths.catering,
                 },
-                {
-                    label: "Música",
-                    link: "/musica",
-                    icon: "/path/to/icon6.png",
-                },
+                { label: "Música", link: "/musica", icon: iconPaths.musica },
                 {
                     label: "Vestimenta",
                     link: "/vestimenta",
-                    icon: "/path/to/icon7.png",
+                    icon: iconPaths.vestimenta,
                 },
                 {
                     label: "Decoracion",
                     link: "/decoracion",
-                    icon: "/path/to/icon8.png",
+                    icon: iconPaths.decoracion,
                 },
                 {
                     label: "Coordinadores de Eventos",
                     link: "/coordinadores",
-                    icon: "/path/to/icon9.png",
+                    icon: iconPaths.coordinadores,
                 },
                 {
                     label: "Transporte",
                     link: "/transporte",
-                    icon: "/path/to/icon10.png",
+                    icon: iconPaths.transporte,
                 },
                 {
                     label: "Belleza y Estilo",
                     link: "belleza",
-                    icon: "/path/to/icon11.png",
+                    icon: iconPaths.belleza,
                 },
             ],
         },
@@ -123,35 +137,31 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
             title: "Planifica tu evento",
             titleLink: "/planificaciones",
             items: [
-                {
-                    label: "Lugares",
-                    link: "/lugares",
-                    icon: "/path/to/icon12.png",
-                },
+                { label: "Lugares", link: "/lugares", icon: iconPaths.lugares },
                 {
                     label: "Invitaciones",
                     link: "/invitaciones",
-                    icon: "/path/to/icon13.png",
+                    icon: iconPaths.invitaciones,
                 },
                 {
                     label: "Programacion",
                     link: "/programacion",
-                    icon: "/path/to/icon14.png",
+                    icon: iconPaths.programacion,
                 },
                 {
                     label: "Presupuesto",
                     link: "/presupuesto",
-                    icon: "/path/to/icon15.png",
+                    icon: iconPaths.presupuesto,
                 },
                 {
                     label: "Lista de Invitados",
                     link: "/invitados",
-                    icon: "/path/to/icon16.png",
+                    icon: iconPaths.invitados,
                 },
                 {
                     label: "Timeline de Eventos",
                     link: "/timeline",
-                    icon: "/path/to/icon17.png",
+                    icon: iconPaths.timeline,
                 },
             ],
         },
@@ -162,7 +172,7 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
                 {
                     label: "Formulario de Contacto",
                     link: "/contact-form",
-                    icon: "/path/to/icon18.png",
+                    icon: iconPaths.contacto,
                 },
             ],
         },
@@ -173,13 +183,13 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
             {
                 title: "Destination Weddings",
                 content: "Cásate en el país que siempre has soñado.",
-                icon: "/path/to/info-icon1.png",
+                icon: iconPaths.fotografos,
             },
             {
                 title: "Gana 5.000€",
                 content:
                     "Participa en la 139ª edición del sorteo de Bodas.net.",
-                icon: "/path/to/info-icon2.png",
+                icon: iconPaths.catering,
             },
         ],
         planificaciones: [
@@ -187,7 +197,7 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
                 title: "Planifica tu evento",
                 content:
                     "Encuentra todos los recursos que necesitas para planificar tu evento.",
-                icon: "/path/to/info-icon3.png",
+                icon: iconPaths.lugares,
             },
         ],
     };
@@ -222,16 +232,16 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
     };
 
     return (
-        <div>
+        <div className={`app-container ${isOpen ? "sidebar-open" : ""}`}>
             <nav className="navbar">
-                <button className="menu-button" onClick={onToggleSidebar}>
-                    ☰
-                </button>
                 <div className="container-navbar">
+                    <button className="menu-button" onClick={onToggleSidebar}>
+                        ☰
+                    </button>
                     <div className="logo">
                         <img src={LogoIcon} alt="Logo" />
                         <a href="#home">
-                            <h1 className="Logo-title">OccasioNexus</h1>
+                            <h1 className="logo-title">OccasioNexus</h1>
                         </a>
                     </div>
                     <div className={`navigation ${isOpen ? "open" : ""}`}>
@@ -264,7 +274,10 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
                                                 handleDropdownClick(key)
                                             }
                                         >
-                                            &gt;
+                                            <img
+                                                src={dropdownToggleButton}
+                                                alt="Toggle Dropdown"
+                                            />
                                         </button>
                                     )}
                                 </li>
@@ -272,11 +285,20 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
                         </ul>
                     </div>
                     <div className="access">
-                        <a href="#accede">ACCEDE</a>
-                        <a href="#registro">REGISTRATE</a>
+                        <a href="/Login">ACCEDE</a>
+                        <a href="/Registro">REGISTRATE</a>
+                    </div>
+                    <div className="mobile-access">
+                        <a href="/Login">
+                            <img src={userIcon} alt="User" />
+                        </a>
                     </div>
                 </div>
             </nav>
+            <div
+                className={`overlay ${activeMenu ? "visible" : ""}`}
+                onClick={onCloseSidebar}
+            ></div>
             {Object.keys(menuItems).map((key) => (
                 <DropdownMenu
                     key={key}
@@ -295,6 +317,12 @@ const Navbar = ({ isOpen, onToggleSidebar, onCloseSidebar }) => {
             ))}
         </div>
     );
+};
+
+Navbar.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onToggleSidebar: PropTypes.func.isRequired,
+    onCloseSidebar: PropTypes.func.isRequired,
 };
 
 export default Navbar;

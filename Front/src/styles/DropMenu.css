@@ -1,4 +1,4 @@
-/* Estilo general del menú desplegable */
+/* Dropdow.css */
 .dropdown-fullwidth {
     display: none;
     position: absolute;
@@ -8,6 +8,8 @@
     padding: 15px 0;
     z-index: 20;
     overflow: visible;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .dropdown-header {
@@ -25,6 +27,8 @@
 .dropdown-fullwidth.open {
     display: flex;
     justify-content: center;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .dropdown-content {
@@ -36,20 +40,17 @@
     max-height: 100vh;
 }
 
-/* Contenedor principal para las opciones y tarjetas */
 .dropdown-main {
     display: flex;
     gap: 2em;
 }
 
-/* Aplica el box-shadow solo en pantallas pequeñas */
 @media (max-width: 1200px) {
     .dropdown-main {
         box-shadow: none;
     }
 }
 
-/* Grid para pantallas grandes */
 .dropdown-grid {
     display: grid;
     gap: 1em;
@@ -96,7 +97,6 @@
     height: 20px;
 }
 
-/* Ocultar iconos en elementos del menú para pantallas pequeñas */
 @media (max-width: 1200px) {
     .dropmenu-item a img {
         display: none;
@@ -154,6 +154,19 @@
     gap: 1em;
 }
 
+.back-button {
+    width: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-back {
+    width: 12px;
+    height: 16px;
+}
+
 .category-item {
     text-decoration: none;
     color: #333;
@@ -201,7 +214,8 @@
     }
 
     .dropdown-header span {
-        font-size: 1.3rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2rem;
         font-weight: 600;
     }
 
@@ -211,16 +225,23 @@
 
     .DropMenu-List a {
         text-decoration: none;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: black;
         height: 100%;
     }
 
     .close-button {
+        width: 20px;
+        height: 100%;
         display: block;
         border: none;
         background-color: transparent;
-        font-size: 2rem;
+        font-size: 1.5em;
+    }
+
+    .close-button img {
+        width: 12px;
+        height: 15px;
     }
 
     .close-button:hover {
@@ -259,6 +280,11 @@
         grid-column: auto;
         text-align: center;
         margin-bottom: 1em;
+    }
+
+    .dropdown-title a {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
     }
 
     .info-boxes {

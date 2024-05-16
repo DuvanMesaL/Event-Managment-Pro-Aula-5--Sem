@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./Components/Navbar";
+import HighlightSection from "./Components/HighlightSection";
 import "./styles/overlay.css";
+import LogoCarousel from "./Components/ProoveedoresSection";
+import PopularSection from "./Components/PopularSection";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +27,9 @@ function App() {
                 onToggleSidebar={handleToggleSidebar}
                 onCloseSidebar={handleCloseSidebar}
             />
+            <HighlightSection />
+            <LogoCarousel />
+            <PopularSection />
         </div>
     );
 }
