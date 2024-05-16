@@ -1,48 +1,45 @@
+import Card from "./Cards";
+import { FaArrowRight } from "react-icons/fa";
 import "../styles/PopularSection.css";
-
-const Card = ({ imgSrc, title, description, rating }) => (
-    <div className="card">
-        <img src={imgSrc} alt={title} />
-        <div className="card-content">
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <div className="rating">{rating}</div>
-        </div>
-    </div>
-);
+import finca from "../assets/Cards-img/Finca.jpg";
+import magia from "../assets/Cards-img/Magia.jpg";
+import catering from "../assets/Cards-img/Catering.jpg";
 
 const PopularSection = () => (
     <section className="popular-section">
         <div className="header">
-            <h2>Lo Más Popular</h2>
-            <p>
-                Descubre las tendencias más solicitadas en eventos que están
-                cautivando a nuestros clientes.
-            </p>
+            <div className="header-most-pupular-info">
+                <h2>Lo Más Popular</h2>
+                <p>
+                    Descubre las tendencias más solicitadas en eventos que están
+                    cautivando a nuestros clientes.
+                </p>
+            </div>
+            <button className="view-more-button">
+                Ver más <FaArrowRight />
+            </button>
         </div>
         <div className="cards-container">
             <Card
-                imgSrc="/images/fincas.jpg"
+                imgSrc={finca}
                 title="Fincas Rústicas"
                 description="Disfruta de un ambiente idílico y natural en nuestra finca."
-                rating="★★★★★"
+                rating={5}
             />
             <Card
-                imgSrc="/images/magia.jpg"
+                imgSrc={magia}
                 title="Show de Magia y Entretenimiento"
                 description="Magos profesionales y animadores que garantizan diversión."
-                rating="★★★★★"
+                rating={5}
             />
             <Card
-                imgSrc="/images/catering.jpg"
+                imgSrc={catering}
                 title="Catering Corporativo Sustentable"
                 description="Menús elaborados con ingredientes locales y sostenibles."
-                rating="★★★★★"
+                rating={5}
             />
         </div>
-        <div className="view-more">
-            <button className="view-more-button">Ver más ➔</button>
-        </div>
+        <div className="view-more"></div>
     </section>
 );
 

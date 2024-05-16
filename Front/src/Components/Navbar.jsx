@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { useState, useEffect, useRef } from "react";
 import LogoIcon from "./../assets/logo-icon.png";
 import dropdownToggleButton from "../assets/Icons/angulo-derecho.svg";
-import userIcon from "../assets/Icons/circulo-de-usuario.svg"; // Icono de usuario
+import userIcon from "../assets/Icons/circulo-de-usuario.svg";
 import "./../styles/navbar.css";
-import "../styles/overlay.css"; // Importar el archivo overlay.css
+import "../styles/overlay.css";
 import DropdownMenu from "./DropMenu";
 import iconPaths from "./iconsPaths";
 
