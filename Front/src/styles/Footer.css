@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #EAF8F7;
+    padding: 40px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-top {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-top-Button-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-left h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    font-size: 18px;
+}
+
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 250px;
+}
+
+.footer-right button {
+    background-color: #00473E;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.footer-right button:hover {
+    background-color: #00352E;
+    transform: scale(1.05);
+}
+
+.footer-top-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.footer-top-logo img {
+    width: 60px;
+    height: auto;
+}
+
+.footer-top-logo h1 {
+    font-family: "Playfair Display", "Roboto", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.footer-main-company-section,
+.footer-main-legal-section,
+.footer-main-social-section {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.item-main-section {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.item-main-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-main-section li {
+    font-size: 16px;
+}
+
+.item-main-section a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s;
+}
+
+.item-main-section a:hover {
+    color: #00473E;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.social-icons a {
+    color: #000;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #00473E;
+}
+
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.separator {
+    width: 80%;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-top-Button-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-right {
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .footer-top-logo {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-main-company-section,
+    .footer-main-legal-section,
+    .footer-main-social-section {
+        min-width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .item-main-section {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
